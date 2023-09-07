@@ -1,1 +1,1 @@
-# docker-nginx-php-mariadb-redis-wp-multisite
+# docker-nginx-php-mariadb-redis-wp
