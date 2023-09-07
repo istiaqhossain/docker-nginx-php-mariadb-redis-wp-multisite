@@ -13,11 +13,11 @@ services:
       - php
 
   php:
-    ports:
-      - "9001:9000"
-    restart: always
     build:
       context: ./docker/php
+    restart: always
+    ports:
+      - "9001:9000"
     volumes:
       - ./src:/var/www/html
     links:
@@ -26,13 +26,13 @@ services:
   mariadb:
     image: mariadb:latest
     restart: always
+    ports:
+      - "3306:3306"
     environment:
       - MYSQL_DATABASE=test
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=dev
       - MYSQL_PASSWORD=dev
-    ports:
-      - "3306:3306"
     volumes:
       - "./data/db:/var/lib/mysql"
 
@@ -43,3 +43,11 @@ services:
       - "8888:8080"
     links:
       - mariadb
+
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
