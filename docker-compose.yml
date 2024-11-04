@@ -42,7 +42,7 @@ services:
       - wp-network
 
   adminer:
-    image: adminer:latest
+    image: shyim/adminerevo:latest
     restart: always
     ports:
       - "8888:8080"
